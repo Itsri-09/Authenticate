@@ -1,23 +1,53 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { useContext } from "react";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
+import AuthenContext, { LoginDetails } from "./Authenticate/AuthenContext";
+import Dashboard from "./Authenticate/dashboard";
+import LoginForm from "./Authenticate/login";
+import Navbar from "./Authenticate/navbar";
+import Particle from "./Authenticate/particle";
+
+
+const AutheAllow = ({ children }) => {
+  const { authen } = useContext(LoginDetails);
+  if (authen) {
+    return children;
+  } else {
+    <Navigate to="/" />;
+  }
+};
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="section">
+    <Particle className="particles"/>
+    <div className="sec">
+    <div className="auth">
+      <AuthenContext >
+        <Router>
+          <Routes>
+            <Route path="/" element={<Navbar/>} />
+            <Route path="/login" element={<LoginForm/>} />
+
+            <Route
+              path="/dashboard"
+              element={
+                <AutheAllow>
+                  <Dashboard/>
+                </AutheAllow>
+              }
+            />
+          </Routes>
+        </Router>
+      </AuthenContext>
+      </div>
+    </div>
+     
     </div>
   );
 }
