@@ -20,19 +20,11 @@ const Dashboard = () => {
     getGreeting(); // Call the function on component mount
   }, []);
   const dashboard = {
-    backgroundColor: "#fff",
-    width: "500px",
-    textAlign: "center",
-    borderRadius: "10px",
-    height: "250px",
-    position:"absolute",
-    top:"50%",
-    left:"50%",
-    transform:"translate(-50%,-50%)"
+   
   };
   
   return (
-    <div style={dashboard}>
+    <div className="dashboard">
       <h2>{greeting}</h2>
       <h1>Welcome to Dashboard</h1>
       <p>You are the authorized Person</p>

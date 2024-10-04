@@ -28,15 +28,6 @@ const LoginForm = () => {
       alert("Invalid Credentials ,Please Try Again");
     }
   };
-  // const input_err = {
-  //   color: "red",
-  //   textAlgin:"center",
-  //   padding: "10px 100px",
-  //   margin:" 0%",
-  //   fontWeight:"600",
-    
-  // };
-
   return (
     <div className="log">
       
