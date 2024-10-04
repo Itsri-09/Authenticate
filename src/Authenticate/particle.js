@@ -2,101 +2,104 @@ import { useCallback } from "react";
 import Particles from "react-particles";
 import { loadSlim } from "tsparticles-slim"; // Ensure 'tsparticles-slim' is installed.
 
-const Particle = () => { // Capitalized to follow React component naming convention
-    const particlesInit = useCallback(async (engine) => {
-        console.log(engine);
-        await loadSlim(engine); // Loads only the features you need, reducing the bundle size
-    }, []);
+const Particle = () => {
+  const particlesInit = useCallback(async (engine) => {
+    console.log(engine);
+    await loadSlim(engine); // Load the slim version of tsparticles for a smaller bundle size.
+  }, []);
 
-    const particlesLoaded = useCallback(async (container) => {
-        console.log(container);
-    }, []);
+  const particlesLoaded = useCallback(async (container) => {
+    console.log(container);
+  }, []);
 
-    return (
-        <div
-            style={{
-                height: "100vh", // Full screen height
-                background: "linear-gradient(to right, #0d47a1, #27ae60)", // Gradient background
-                position: "relative",
-            }}
-        >
-            <Particles
-                id="tsparticles"
-                init={particlesInit}
-                loaded={particlesLoaded}
-                options={{
-                    background: {
-                        color: {
-                            value: "", // Set background color to empty since we use a gradient
-                        },
-                    },
-                    fpsLimit: 120,
-                    interactivity: {
-                        events: {
-                            onClick: {
-                                enable: true,
-                                mode: "push",
-                            },
-                            onHover: {
-                                enable: true,
-                                mode: "repulse",
-                            },
-                            resize: true,
-                        },
-                        modes: {
-                            push: {
-                                quantity: 4,
-                            },
-                            repulse: {
-                                distance: 200,
-                                duration: 0.4,
-                            },
-                        },
-                    },
-                    particles: {
-                        color: {
-                            value: "#ffffff", // Particles color
-                        },
-                        links: {
-                            color: "#ffffff",
-                            distance: 150,
-                            enable: true,
-                            opacity: 0.5,
-                            width: 1,
-                        },
-                        move: {
-                            direction: "none",
-                            enable: true,
-                            outModes: {
-                                default: "bounce",
-                            },
-                            random: false,
-                            speed: 1,
-                            straight: false,
-                        },
-                        number: {
-                            density: {
-                                enable: true,
-                                area: 800,
-                            },
-                            value: 80,
-                        },
-                        opacity: {
-                            value: 0.5,
-                        },
-                        shape: {
-                            type: "circle",
-                        },
-                        size: {
-                            value: { min: 1, max: 5 },
-                        },
-                    },
-                    detectRetina: true,
-                }}
-            />
-        </div>
-    );
+  return (
+    <div
+      style={{
+        position: "fixed",  // Ensures the particles stay in the background
+        width: "100%",      // Full width of the screen
+        height: "100vh",    // Full height of the screen
+        top: 0,             // Align the particles to the top of the screen
+        left: 0,            // Align the particles to the left of the screen
+        zIndex: -1,         // Keep particles behind other content
+        background: "linear-gradient(to right, #0d47a1, #27ae60)", // Gradient background
+      }}
+    >
+      <Particles
+        id="tsparticles"
+        init={particlesInit}
+        loaded={particlesLoaded}
+        options={{
+          background: {
+            color: {
+              value: "", // No need for a solid background since we're using a gradient.
+            },
+          },
+          fpsLimit: 120, // Limit to 120 frames per second for performance.
+          interactivity: {
+            events: {
+              onClick: {
+                enable: true,
+                mode: "push", // Add particles on click.
+              },
+              onHover: {
+                enable: true,
+                mode: "repulse", // Repel particles when hovered.
+              },
+              resize: true,
+            },
+            modes: {
+              push: {
+                quantity: 4, // Number of particles added on click.
+              },
+              repulse: {
+                distance: 200, // Distance for repulse effect on hover.
+                duration: 0.4,
+              },
+            },
+          },
+          particles: {
+            color: {
+              value: "#ffffff", // Set particle color to white.
+            },
+            links: {
+              color: "#ffffff", // Link color between particles.
+              distance: 150,    // Max distance for links between particles.
+              enable: true,     // Enable linking particles.
+              opacity: 0.5,     // Link opacity.
+              width: 1,         // Link width.
+            },
+            move: {
+              direction: "none", // Particles move randomly.
+              enable: true,      // Enable particle movement.
+              outModes: {
+                default: "bounce", // Particles bounce off edges.
+              },
+              random: false,
+              speed: 1, // Particle speed.
+              straight: false,
+            },
+            number: {
+              density: {
+                enable: true, // Enable particle density control.
+                area: 800,    // Area to control particle density.
+              },
+              value: 80, // Number of particles.
+            },
+            opacity: {
+              value: 0.5, // Particle opacity.
+            },
+            shape: {
+              type: "circle", // Particle shape.
+            },
+            size: {
+              value: { min: 1, max: 5 }, // Particle size range.
+            },
+          },
+          detectRetina: true, // Adjust particle rendering for retina displays.
+        }}
+      />
+    </div>
+  );
 };
 
 export default Particle;
-    

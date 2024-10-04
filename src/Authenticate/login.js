@@ -38,13 +38,14 @@ const LoginForm = () => {
   // };
 
   return (
+    <div className="log">
+      
     <div className="login_page">
       <p className="h1">LoginForm</p>
       <form onSubmit={handleSubmit}>
         <div className="input_field">
           <input
             type="text"
-            // placeholder="Enter your name"
             name="username"
             required
             onChange={handleChange}
@@ -69,6 +70,7 @@ const LoginForm = () => {
           Submit
         </button>
       </form>
+    </div>
     </div>
   );
 };

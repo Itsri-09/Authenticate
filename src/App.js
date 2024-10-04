@@ -23,30 +23,29 @@ const AutheAllow = ({ children }) => {
 
 function App() {
   return (
-    <div className="section">
-      <Particle className="particles" />
-      <div className="sec">
-        <div className="auth">
-          <AuthenContext>
-            <Router>
-              <Navbar />
-              <Routes>
-                <Route path="/login" element={<LoginForm />} />
-                <Route
-                  path="/dashboard"
-                  element={
-                    <AutheAllow>
-                      <Dashboard />
-                    </AutheAllow>
-                  }
-                />
-              </Routes>
-            </Router>
-          </AuthenContext>
-        </div>
+    <div>
+      <Particle id="particle" />
+      <div className="">
+        <AuthenContext>
+          <Router>
+            <Navbar />
+            <Routes>
+              <Route path="/login" element={<LoginForm />} />
+              <Route
+                path="/dashboard"
+                element={
+                  <AutheAllow>
+                    <Dashboard />
+                  </AutheAllow>
+                }
+              />
+            </Routes>
+          </Router>
+        </AuthenContext>
       </div>
     </div>
   );
 }
+
 
 export default App;

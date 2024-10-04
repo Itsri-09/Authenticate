@@ -1,7 +1,5 @@
 import {  useEffect } from "react";
 import { useState } from "react";
-// import { LoginDetails } from "./AuthenContext";
-import { Link } from "react-router-dom";
 const Dashboard = () => {
   const [greeting, setGreeting] = useState("");
 
@@ -23,30 +21,21 @@ const Dashboard = () => {
   }, []);
   const dashboard = {
     backgroundColor: "#fff",
-    // padding:'20px',
     width: "500px",
     textAlign: "center",
     borderRadius: "10px",
     height: "250px",
+    position:"absolute",
+    top:"50%",
+    left:"50%",
+    transform:"translate(-50%,-50%)"
   };
-  const logout_button={
-    padding:'10px 20px',
-    backgroundColor:'red',
-    color:'white',
-    borderRadius:'5px',
-    width:'250px',
-    fontSize:'20px',
-    fontWeight:'bolder'
-};
+  
   return (
     <div style={dashboard}>
       <h2>{greeting}</h2>
       <h1>Welcome to Dashboard</h1>
       <p>You are the authorized Person</p>
-      <Link to="/">
-      <button style={logout_button}>logOut</button>
-      </Link>
-      
     </div>
   );
 };
