@@ -122,10 +122,7 @@ input:valid ~ label {
   color: #000;
   background:#fff;
   backdrop-filter: blur(5px);
-  /* border-left: 2px solid #000;
-  border-right: 2px solid #000; */
   padding: 0px 5px;
-  /* border-radius: 5px; */
 }
 .sub_button {
   width: 150px;
@@ -149,6 +146,7 @@ input:valid ~ label {
 }
 /*dashbord section */
 .dashboard{
+  padding: 50px;
   background-color: #fff;
   width: 500px;
   text-align: center;
@@ -159,6 +157,12 @@ input:valid ~ label {
   left:50%;
   transform:translate(-50%,-50%);
   z-index: -1;
+}
+.dashboard>h2{
+  font-size: clamp(18px,8vw,30px );
+}
+.dashboard>h1{
+  font-size: clamp(18px,8vw,1.325rem );
 }
 @media (max-width:1400px) {
   .nav-item {
